@@ -12,6 +12,8 @@ services:
       - CONNECTION_SECRET= #optional
       - SUDO_PASSWORD= ${SUDO_PASS} #optional
       - SUDO_PASSWORD_HASH= #optional
+      - PROXY_DOMAIN= ${DOMAIN} #optional
+      - DEFAULT_WORKSPACE=/config/workspace #optional     
     volumes:
       - ./config:/config
     ports:
@@ -22,5 +24,4 @@ services:
   
 networks:
   nginx_default:
-    name: nginx_default
     external: true
