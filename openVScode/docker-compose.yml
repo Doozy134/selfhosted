@@ -1,0 +1,26 @@
+services:
+  openvscode-server:
+    image: lscr.io/linuxserver/openvscode-server
+    container_name: openvscode-server
+    env_file:
+      - .env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - CONNECTION_TOKEN= ${TOKEN}
+      - CONNECTION_SECRET= #optional
+      - SUDO_PASSWORD= ${SUDO_PASS} #optional
+      - SUDO_PASSWORD_HASH= #optional
+    volumes:
+      - ./config:/config
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    networks:
+      - nginx_default
+  
+networks:
+  nginx_default:
+    name: nginx_default
+    external: true
