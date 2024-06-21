@@ -1,0 +1,15 @@
+services:
+    speedtest:
+        restart: unless-stopped
+        container_name: openspeedtest
+        ports:
+            - '3000:3000'
+            - '3001:3001'
+        image: openspeedtest/latest
+        networks:
+          - nginx_default
+
+networks:
+  nginx_default:
+    name: nginx_default
+    external: true
