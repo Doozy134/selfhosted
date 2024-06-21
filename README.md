@@ -1,8 +1,9 @@
 # Selfhosted - Docker Compose files
 
-This repository contains a collection of folders, each with its own `docker-compose.yml` to deploy various self-hosted applications. Some folders also include an `example.env` 
-as a template for passing in credentials / options to the docker compose file.
+This repository contains a collection of folders, each with its own `docker-compose.yml` to deploy various self-hosted applications. Some folders also include an `example.env`
+as a template for passing in credentials / options to the docker compose file. \\
 
+Within lots of these docker compose files, the containers join the `nginx_default` network. This is the network my reverse proxy is on hence why it is included within the compose file. This network is `external` and so is not removed after `docker compose down`.
 
 ## Requirements
 
@@ -45,7 +46,8 @@ Make a folder for the chosen app and change directory.
     ```bash
     docker-compose up -d
     ```
-    
+    If you spin up / down the stack but changes are not reflected, you can add the `--force-recreate` tag.
+
 4. **Stop the application**
 
     To stop the application, run:
