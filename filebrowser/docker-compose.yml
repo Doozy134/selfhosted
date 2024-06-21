@@ -1,0 +1,14 @@
+services:
+  file-browser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    user: 1001:1001
+    ports:
+      - 8081:80
+    volumes:
+      # Mount point for filebrowser - ensure user has permissions to modify location
+      - /home/ubuntu/:/srv
+      - /home/ubuntu/docker/filebrowser/filebrowser.db:/database.db
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
