@@ -17,6 +17,9 @@ systemctl enable --now docker
 apt update
 apt install docker-compose-plugin
 ```
+> [!NOTE]
+> If installing on Debian, the convenience script might not work and you need to follow the steps listed [here](https://docs.docker.com/engine/install/debian/),  \
+> paying special attention to the **note** listed there
 
 ## Folder Structure
 
@@ -44,7 +47,7 @@ Make a folder for the chosen app and change directory.
 3. **Start the application**
 
     ```bash
-    docker-compose up -d
+    docker compose up -d
     ```
     If you spin up / down the stack but changes are not reflected, you can add the `--force-recreate` tag.
 
@@ -53,5 +56,5 @@ Make a folder for the chosen app and change directory.
     To stop the application, run:
 
     ```bash
-    docker-compose down
+    docker compose down
     ```
